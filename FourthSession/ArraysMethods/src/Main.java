@@ -202,6 +202,15 @@ public class Main {
         System.out.println("getParity  " + getParity(5));
         System.out.println("getParity  " + getParity(0));
 
+        System.out.println("getParity  " + getParity(3.5));
+        System.out.println("getParity  " + getParity("3.5"));
+
+        int[] arr2 = new int[]{1, 2, 3, 4};
+        int num = 10;
+        String text = "feri";
+        MultiplyArrary(arr2, num, text);
+        System.out.println(Arrays.toString(arr2) + " " + num + " " + text);
+
     }
 
     public static void hello() {        // A függvényt a main függvényen kívül hozzuk létre
@@ -215,7 +224,7 @@ public class Main {
 
     public static String getGreetingString(String name, int birthYear) {    // Készítsünk egy függvényt, ami megkapja a nevünket és a születési évet, ---- visszaad egy formázott szöveget
         int age = 2023 - birthYear;                                         // kiszámolja, hány évesek vagyunk
-        String result = "Szia " + name + " te " + age  + " éves vagy!";     // egy formázott szöveget, amiben köszönt minket!​
+        String result = "Szia " + name + " te " + age + " éves vagy!";     // egy formázott szöveget, amiben köszönt minket!​
         return result;                                                      // visszaad
     }
 
@@ -231,6 +240,16 @@ public class Main {
     //Készítsünk egy "GetParity" nevű függvényt ,ami egy egész számot vár,
     // és visszaad 1-et, ha a szám pozitív, 0-át, ha a szám 0, és -1-et, ha a szám negatív!
     public static int getParity(int num) {
+        return getParity((double) num);
+    }
+
+    public static int getParity(String numberString) {
+        double num = Double.parseDouble(numberString);
+        return getParity(num);
+    }
+
+    // Paraméter overloading
+    public static int getParity(double num) {
         if (num > 0) {
             return 1;
         } else if (num == 0) {
@@ -240,9 +259,20 @@ public class Main {
         }
     }
 
+    public static int getParity(int num, int num2) {
+        return 1;
+    }
+
     // Készítsünk egy "IsEven" nevű függvényt, ami egy egész számot vár paraméterül,
     // és logikai értékkel tér vissza annak függvényében, hogy a szám páros-e!
-    public static boolean isEven(int num) {
+
+    /**
+     * Eldönti egy számról, hogy páros-e
+     * @param num A szám, amiről eldöntjük ezt.
+     * @param num2 Ez meg egy fölösleges paraméter
+     * @return True ha páros. False, ha páratlan
+     */
+    public static boolean isEven(int num, int num2) {
         if (num % 2 == 0) {
             return true;
         } else {
@@ -251,4 +281,14 @@ public class Main {
         // return num % 2 == 0
     }
 
+    // Készítsünk egy függvényt "MultiplyArray", ami egy int tömböt vár paraméterül, és minden elemét megszorozza 2-vel. Ne adjon vissza semmit!
+    public static void MultiplyArrary(int[] input, int num, String s) {
+        // int[] input2 = input.clone(); - Ezzel lemásolhatjuk egy új tömbbe, és már nem leszünk hatással a hívóra
+        // input = new int[] {10, 20, 30};       // ha új referenciát hozunk létre, már nem lesz visszahatás
+        for (int i = 0; i < input.length; i++) {
+            input[i] *= 2;                      // ha azonban az eredeti tömb elemeit módosítjuk hatással lesz az eredetire
+        }
+        s += "asd";                     // stringen nem lesz jó, mert az immutable, új referencia jön létre
+        num *= 2;                       // Primitív típus nem hat vissza, mert értékként adódik át
+    }
 }
