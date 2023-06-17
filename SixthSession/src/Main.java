@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,10 +17,17 @@ public class Main {
 //        System.out.println("Kétszeres tömb: " + Arrays.toString(arr2));
 //        System.out.println("Páros elemek tömb: " + Arrays.toString(BasicAlgorithms.GetEvens(arr)));
 //        BasicAlgorithms.GetByParity(arr);
-        int[] res = BasicAlgorithms.Section(new int[]{1, 2, 3, 4, 5}, new int[]{5, 6, 7, 1, 2, 10});
-        System.out.println("metszet: " + Arrays.toString(res));
-        res = BasicAlgorithms.Union(new int[]{1, 2, 3, 4, 5}, new int[]{5, 6, 7, 1, 2, 10});
-        System.out.println("unio: " + Arrays.toString(res));
+//        int[] res = BasicAlgorithms.Section(new int[]{1, 2, 3, 4, 5}, new int[]{5, 6, 7, 1, 2, 10});
+//        System.out.println("metszet: " + Arrays.toString(res));
+//        res = BasicAlgorithms.Union(new int[]{1, 2, 3, 4, 5}, new int[]{5, 6, 7, 1, 2, 10});
+//        System.out.println("unio: " + Arrays.toString(res));
+
+        int[] arr2 = new int[10];
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = ThreadLocalRandom.current().nextInt(1, 10);
+        }
+        System.out.println("Generált tömb: " + Arrays.toString(arr2));
+        System.out.println("Páros darabszám: " + Exercises.CountEven(arr2));
     }
 
 
