@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -15,9 +16,92 @@ public class Main {
 //        long endTime = System.currentTimeMillis();
 //        System.out.println((endTime - startTime) / 1000.0 + " sec");
 ////        System.out.println("Rendezett: " + Arrays.toString(arr));
+
+//        RockPaperScissors3();
+        HangingMan.Game();
     }
 
-    public static int[] GetRandomArray(int size){
+    public static void RockPaperScissors() {
+        System.out.println("Add meg, mit választasz! 0 - kő, 1 - papír, 2 - olló");
+        Scanner sc = new Scanner(System.in);
+        int player = sc.nextInt();
+        int enemy = (int) (Math.random() * 3);
+        System.out.println("Gép döntése: " + enemy);
+
+        int ROCK = 0;
+        int PAPER = 1;
+        int SCISSORS = 2;
+
+        if (player == enemy) {
+            System.out.println("Döntetlen");
+        } else if (player == ROCK && enemy == PAPER) {
+            System.out.println("Gép nyert, papír üti a követ");
+        } else if (player == ROCK && enemy == SCISSORS) {
+            System.out.println("Játékos nyert, kő üti az ollót");
+        } else if (player == PAPER && enemy == ROCK) {
+            System.out.println("Játékos nyert, papír üti a követ");
+        } else if (player == PAPER && enemy == SCISSORS) {
+            System.out.println("Gép nyert, olló üti a papírt");
+        } else if (player == SCISSORS && enemy == ROCK) {
+            System.out.println("Gép nyert, kő üti az ollót");
+        } else if (player == SCISSORS && enemy == PAPER) {
+            System.out.println("Játékos nyert, olló üti a papírt");
+        } else {
+            System.out.println("Ismeretlen állapot");
+        }
+    }
+
+    public static void RockPaperScissors3() {
+        Scanner sc = new Scanner(System.in);
+        int playerWins = 0;
+        int enemyWins = 0;
+
+        int ROCK = 0;
+        int PAPER = 1;
+        int SCISSORS = 2;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Add meg, mit választasz! 0 - kő, 1 - papír, 2 - olló");
+
+            int player = sc.nextInt();
+            int enemy = (int) (Math.random() * 3);
+            System.out.println("Gép döntése: " + enemy);
+
+            if (player == enemy) {
+                System.out.println("Döntetlen");
+            } else if (player == ROCK && enemy == PAPER) {
+                System.out.println("Gép nyert, papír üti a követ");
+                enemyWins++;
+            } else if (player == ROCK && enemy == SCISSORS) {
+                System.out.println("Játékos nyert, kő üti az ollót");
+                playerWins++;
+            } else if (player == PAPER && enemy == ROCK) {
+                System.out.println("Játékos nyert, papír üti a követ");
+                playerWins++;
+            } else if (player == PAPER && enemy == SCISSORS) {
+                System.out.println("Gép nyert, olló üti a papírt");
+                enemyWins++;
+            } else if (player == SCISSORS && enemy == ROCK) {
+                System.out.println("Gép nyert, kő üti az ollót");
+                enemyWins++;
+            } else if (player == SCISSORS && enemy == PAPER) {
+                System.out.println("Játékos nyert, olló üti a papírt");
+                playerWins++;
+            } else {
+                System.out.println("Ismeretlen állapot");
+            }
+        }
+
+        if (playerWins == enemyWins) {
+            System.out.println("Döntetlen: " + playerWins + " - " + enemyWins);
+        } else if (playerWins > enemyWins) {
+            System.out.println("Játékos nyert: " + playerWins + " - " + enemyWins);
+        } else {
+            System.out.println("Gép nyert: " + enemyWins + " - " + playerWins);
+        }
+    }
+
+    public static int[] GetRandomArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = ThreadLocalRandom.current().nextInt(1, size * 10);
