@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SeventhSession:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SeventhSession_jar</output-path>
+    <root id="archive" name="SeventhSession.jar">
+      <element id="module-output" name="SeventhSession" />
+    </root>
+  </artifact>
+</component>
